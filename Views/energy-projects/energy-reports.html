@@ -1,0 +1,250 @@
+<style>
+
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 300;
+        line-height: 1.42em;
+        color: #A7A1AE;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+
+    /* Background-color of the odd rows */
+    .container tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    /* Background-color of the even rows */
+    .container tr:nth-child(even) {
+        background-color: #dae1ed;
+    }
+
+    .container th {
+        background-color: #A7A1AE;
+    }
+
+    /* .container td:first-child { color: #FB667A; } */
+
+    .container tr:hover {
+        background-color: #464A52;
+        -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+        -moz-box-shadow: 0 6px 6px -6px #0E1119;
+        box-shadow: 0 6px 6px -6px #0E1119;
+    }
+
+    @media (max-width: 800px) {
+
+        .container td:nth-child(4),
+        .container th:nth-child(4) {
+            display: none;
+        }
+    }
+
+    .bar {
+        margin-bottom: 50px;
+    }
+
+
+    hr {
+        color: #fff;
+    }
+
+    .black {
+        color: #000;
+    }
+
+    .thead-primary {
+        background-color: #007bff;
+    }
+
+    .display {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+        padding: 5px;
+        text-align: center;
+    }
+
+
+    tr {
+        cursor: pointer;
+    }
+
+
+
+    .offline {
+        color: #FB667A;
+    }
+
+    .online {
+        color: rgb(41, 170, 36);
+    }
+
+    .txt-prim {
+        color: #2892ce;
+    }
+
+    .text-dark {
+        color: black;
+    }
+
+
+
+
+
+    .myBlueTableHeader {
+        color: white;
+        background-color: #2892ce !important;
+    }
+    .spacedButtons{
+        margin-bottom:4px;
+        margin-right:4px;
+    }
+    button.selected{
+        font-size: 1.3rem;
+    }
+    .form-control{
+        border-left: 2px solid #2892ce;
+        border-radius: 5px;
+    }
+    .datepicker-dropdown{
+        display: none;
+    }
+</style>
+<div class="row" style="margin: auto;padding: 20px;max-height: 100%;overflow-y: scroll;">
+
+    <div class="col-xs-12 col-sm-12">
+
+        <div class="box box-primary shadow-lg">
+            <div class="box-header" style="cursor: move;">
+                <h2 class="box-title" style="font-size: 20px;"><i class="fa fa-desktop txt-prim"></i> <span
+                        >Load Reports</span></h2>
+                <div class="box-tools pull-right" data-toggle="tooltip" title="" data-original-title="Status">
+                    <!-- <div><span id="param_ONLINE" class="online" style="font-weight: 400;font-size:2rem;">ONLINE</span>
+                    </div> -->
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="section" style="margin-top:8px;">
+                    <div class="container" style="width: 90%;min-height: 100px;">
+                      <div class="row">
+                        <button class="btn btn-primary btn-sm" onclick="initData()">Refresh <i class="fa fa-spinner"></i></button>
+                      </div> 
+                      <div class="row">
+                        <div class="col-sm-3 col-xs-6" style="text-align: center;">
+                            
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Select Meter</label>
+                                <select class="form-control" id="reportMeterSelect">
+                                 
+                                </select>
+                              </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6" style="text-align: center;">
+                            <label for="">From</label>
+                            <div  id="report-start-date-provider" class="input-group date" data-provide="datepicker" style="display: none;">
+                                <input id="report-start-date" type="text" class="form-control">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3 col-xs-6" style="text-align: center;">
+                            <label for="">To</label>
+                            <div  id="report-end-date-provider" class="input-group date" data-provide="datepicker" style="display: none;">
+                                <input id="report-end-date" type="text" class="form-control">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+     
+                        <div class="col-sm-3 col-xs-6" style="text-align: center;">
+                            <button id="loadReportButton" class="btn btn-lg btn-success btn-block" onclick="loadReport()"><i class='fa fa-line-chart'></i> Load Report</button>
+                            <button id="EXPORTReportButton" class="btn btn btn-primary btn-block" onclick="exportTableToExcel()"><i class='fa fa-file'></i> Export Report</button>
+                        </div>
+                        <div class="col-sm-12 col-xs-12">
+                          
+                          <div id="loading-spinner" class="container" style="text-align: center;display: none;">
+                          <h3>Loading...</h3> 
+                          </div>
+                          <h3 id="meterNameLabel"></h3> 
+                          <div class="container-fluid shadow-lg" style="margin-top: 15px;padding: 15px;overflow-x: scroll;min-height: 300px;">
+
+                           <div style="overflow-x: scroll;">
+                            <table id="energy-report-table"
+                            class="table table-hover table-striped table-bordered table-responsive table-hover text-dark"
+                            style="text-align: center;">
+                            <thead>
+                                <tr role="row">
+                                
+
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 130px;">
+                                        Time</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        V1</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        V2</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        V3</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        I1</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        I2</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        I3</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        WT</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        VART</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        VAT</th>
+                                    <th class="nowrap text-center ccc dt-center myBlueTableHeader" tabindex="0"
+                                        aria-controls="table_data_tags" rowspan="1" colspan="1" style="min-width: 65px;">
+                                        PFT</th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tableData">
+                             
+                            </tbody>
+                        </table>
+                           </div>
+                          </div>
+                        </div>
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>

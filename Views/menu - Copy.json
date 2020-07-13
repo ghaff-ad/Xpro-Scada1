@@ -1,0 +1,25 @@
+{
+  "enabled": true,
+  "position": "bottom",
+  "views": [
+   
+    {
+      "name": "METERS",
+      "description": "METERS DISPLAY",
+      "path": "meters/meters",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    },
+    {
+      "name": "CCTV",
+      "description": "CCTV DISPLAY",
+      "path": "cctv/cctv",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    }
+  ]
+}

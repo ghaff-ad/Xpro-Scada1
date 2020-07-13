@@ -1,0 +1,68 @@
+{
+    "enabled": true,
+    "position": "bottom",
+    "views": [
+      {
+        "name": "INVERTER DISPLAY",
+        "description": "INVERTER CAPTION",
+        "path": "inverter/inverter",
+        "view_access": -1,
+        "show": true,
+        "show_description": true,
+        "type": "html_user"
+      },
+      {
+        "name": "LIFTS DISPLAY",
+        "description": "LIFTS FAULT CODES",
+        "path": "lifts/lifts",
+        "view_access": -1,
+        "show": true,
+        "show_description": true,
+        "type": "html_user"
+      }, {
+        "name": "CCTV",
+        "description": "CCTV",
+        "path": "cctv/cctv",
+        "view_access": -1,
+        "show": true,
+        "show_description": true,
+        "type": "html_user"
+      },
+      {
+        "name": "VIEW ONE",
+        "description": "View One Description",
+        "path": "view1",
+        "view_access": 9,
+        "show": true,
+        "show_description": false,
+        "type": "html_user"
+      },
+      {
+        "name": "SVG EXAMPLE",
+        "description": "SVG DISPLAY",
+        "path": "svg1/svg1",
+        "view_access": -1,
+        "show": true,
+        "show_description": true,
+        "type": "svg_user"
+      },
+      {
+        "name": "CAR",
+        "description": "CAR DISPLAY",
+        "path": "svg2/car",
+        "view_access": -1,
+        "show": true,
+        "show_description": true,
+        "type": "svg_user"
+      },
+      {
+        "name": "RAILS",
+        "description": "RAILS DISPLAY",
+        "path": "svg2/rails",
+        "view_access": -1,
+        "show": true,
+        "show_description": true,
+        "type": "svg_user"
+      }
+    ]
+  }

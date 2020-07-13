@@ -1,0 +1,33 @@
+<!-- 
+<div style="width: 100%; height: 100%; background: #00a7d0; padding1: 10px; margin-top: 0px">
+
+    <div style="padding: 10px">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div id="add" class="btn btn-success">Open TEST View</div>
+                <div class="inverter-model">Model = {{data.model}}</div>
+                <div>Power = {{data.power}}</div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div> -->
+<div style="position: absolute;right: 10px;top: 50px;background: white;padding: 5px;border-radius: 5px;cursor: pointer;z-index: 100;">
+    
+    <input type="radio" id="male" name="gender" value="male" onclick="setUPS(1)">
+    <label for="male">First floor</label>
+    <input type="radio" id="female" name="gender" value="female" onclick="setUPS(2)">
+    <label for="female">Fourth floor</label>
+    <input type="radio" id="other" name="gender" value="other" onclick="setUPS(3)">
+    <label for="other">Seventh Floor</label>
+    <input type="radio" id="other" name="gender" value="other" onclick="setUPS(4)">
+    <label for="other">Eighth Floor</label>
+</div>
+<iframe id="ups1" src="/vpe" frameborder="0" style="width: 100%;height: 100%;z-index: 1;"></iframe>
+<iframe id="ups2" src="https://www.w3schools.com" frameborder="0" style="width: 0%;height: 0%;z-index: 1;"></iframe>
+<iframe id="ups3" src="/vpe" frameborder="0" style="width: 0%;height: 0%;z-index: 1;"></iframe>
+<iframe id="ups4" src="/vpe" frameborder="0" style="width: 0%;height: 0%;z-index: 1;"></iframe>

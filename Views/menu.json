@@ -1,0 +1,72 @@
+{
+  "enabled": true,
+  "position": "bottom",
+  "views": [
+   
+  
+    {
+      "name": "Solar Monitoring",
+      "description": "Solar System",
+      "path": "solar/solar",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    },
+  
+    {
+      "name": "FRAME",
+      "description": "i FRAME",
+      "path": "inverter/inverter",
+      "view_access": -1,
+      "show": false,
+      "show_description": true,
+      "type": "html_user"
+    },
+    {
+      "name": "CCTV",
+      "description": "CCTV",
+      "path": "cctv/cctv",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    },
+    {
+      "name": "<i class='fa fa-line-chart'></i>Data Logs",
+      "description": "DATA LOGS",
+      "path": "logs/logs",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    },
+    {
+      "name": "<i class='fa fa-bar-chart'></i>Energy Reports",
+      "description": "ENERGY REPORTS",
+      "path": "energy-reports/energy-reports",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    },
+    {
+      "name": "Close Control Unit",
+      "description": "CCU",
+      "path": "ccu/ccu",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    },
+    {
+      "name": "ENERGY METERS",
+      "description": "ENERGY METERS",
+      "path": "meters/meters",
+      "view_access": -1,
+      "show": true,
+      "show_description": true,
+      "type": "html_user"
+    }
+  ]
+}

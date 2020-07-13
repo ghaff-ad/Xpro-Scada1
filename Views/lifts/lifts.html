@@ -1,0 +1,348 @@
+<div style="width: 100%; height3: 100%; background: #00a7d0; padding1: 10px; margin-top: 0px">
+
+    <div style="padding: 20px">
+        <div class="row">
+
+            <div class="col-md-12 text-center">
+                <form class="form-inline text-center">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" class="sr-only">
+                            Fault Code
+                        </label>
+                        <input type="number" class="form-control" id="fault-code" placeholder="1">
+                    </div>
+                    <button id="searchButton" class="btn btn-primary mb-2">
+                        Search
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+<div class="container card text-center mt-3 mb-3 pad2"
+    style="margin-top:30px;border: 2px solid grey;border-radius:10px;padding: 50px;">
+    <h3 id="meaning"></h3>
+</div>
+<div class="container card bg-light" style="padding: 40px;max-height: 350px; margin-top: 35px;overflow-y: scroll;">
+    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid"
+        aria-describedby="dataTable_info" style="width: 100%;">
+        <thead>
+            <tr role="row">
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 220px;">Code</th>
+                <th class="sorting" tabindex="0" rowspan="1" colspan="1" style="width: 114px;">Meaning</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th rowspan="1" colspan="1">Position</th>
+                <th rowspan="1" colspan="1">Office</th>
+            </tr>
+        </tfoot>
+        <tbody id="codeTableRows" style="overflow-y:scroll;">
+            <tr role="row" class="odd">
+                <td>2</td>
+                <td>2</td>
+            </tr>
+    </table>
+</div>
+
+<!-- <script>
+    // const searchButton = document.querySelector('#searchButton');
+    const codeTableRows = document.querySelector('#codeTableRows');
+    Params = [
+
+        { "code": "0", "meaning": "Normal Operation" },
+        { "code": "1", "meaning": "Front Open Door Limit Does Not Open" },
+        { "code": "2", "meaning": "Rear Open Door Limit Does Not Open" },
+        { "code": "3", "meaning": "Front Open Door Limit Does Not Close" },
+        { "code": "4", "meaning": "Rear Open Door Limit Does Not Close" },
+        { "code": "5", "meaning": "Front Closed Door Limit Does Not Open" },
+        { "code": "6", "meaning": "Rear Closed Door Limit Does Not Open" },
+        { "code": "7", "meaning": "Front Closed Door Limit Does Not Close" },
+        { "code": "8", "meaning": "Rear Closed Door Limit Does Not Close" },
+        { "code": "9", "meaning": "Front Door Open Push-Button Activated In Excess" },
+        { "code": "10", "meaning": "Rear Door Open Push-Button Activated In Excess" },
+        { "code": "11", "meaning": "Front Capacitive Edge Activated" },
+        { "code": "12", "meaning": "Rear Capacitive Edge Activated" },
+        { "code": "13", "meaning": "Front Photocel Activated" },
+        { "code": "14", "meaning": "Rear Photocel Activated" },
+        { "code": "15", "meaning": "Front Safety Edge Activated" },
+        { "code": "16", "meaning": "Mo Rear Safety Edge Activated" },
+        { "code": "17", "meaning": "Ithe Interlock Seres Does Not Oren With Open Arder" },
+        { "code": "18", "meaning": "The Presence Series Does Not Open With Open Order" },
+        { "code": "19", "meaning": "Failure Detected In Eprom Memory" },
+        { "code": "20", "meaning": "Presence Series Signal Is Not Detected" },
+        { "code": "21", "meaning": "Interlock Series Signal Is Not Detected" },
+        { "code": "22", "meaning": "Sr-Module Failure Detected" },
+        { "code": "23", "meaning": "Preference Connecthion Car" },
+        { "code": "24", "meaning": "Fire Service Switch Activated" },
+        { "code": "25", "meaning": "Out Of Service Switch Activated" },
+        { "code": "26", "meaning": "Seismic Sensor Actvated" },
+        { "code": "27", "meaning": "Failure In Position Communication" },
+        { "code": "28", "meaning": "Safeties Opening< 500Ms" },
+        { "code": "29", "meaning": "Opening Door In Operation C200Ms" },
+        { "code": "30", "meaning": "libre" },
+        { "code": "31", "meaning": "libre" },
+        { "code": "32", "meaning": "Overload sensor activation detected" },
+        { "code": "33", "meaning": "Differential load sensor activation detected" },
+        { "code": "34", "meaning": "Communication failure of the multplex I grou" },
+        { "code": "35", "meaning": "Rotational emergency powon ach tp" },
+        { "code": "36", "meaning": "Expected uneven start-o time has beene eeded" },
+        { "code": "37", "meaning": "Fire sensor act ted" },
+        { "code": "38", "meaning": "Multiplerwoighting ault,ot callsng up" },
+        { "code": "39", "meaning": "multiplex weighing fa front cails going down" },
+        { "code": "40", "meaning": "multiplex weighing fault,rear calls going up" },
+        { "code": "41", "meaning": "multiplex weighing fiault,rear calls going down" },
+        { "code": "42", "meaning": "multiplex communication failure. 'multi_number' parameter failure"},
+        { "code": "43", "meaning": "failure due to short-circuit in one of the protected ucm2 output (further detail in fault 'subcodes')"},
+        { "code": "44", "meaning": "Power Failure" },
+        { "code": "45", "meaning": "24V Failure" },
+        { "code": "46", "meaning": "Control In Shabbat Mode" },
+        { "code": "47", "meaning": "Emergency Equipment In Car (EAR) Failure Signal" },
+        { "code": "48", "meaning": "Vane Counting Fault" },
+        { "code": "49", "meaning": "Number Of Connections/Time Exceeded" },
+        { "code": "50", "meaning": "There Is No Lock Signal On Attempting To Close The Door" },
+        { "code": "51", "meaning": "There Is No Presence Signal On Attempting To Close The Door" },
+        { "code": "52", "meaning": "The Number Of Close Attempts" },
+        { "code": "53", "meaning": "Non-Start Command Activated" },
+        { "code": "54", "meaning": "Both Activated Slowdowns Detected" },
+        { "code": "55", "meaning": "Stop Travel When Upwards Activated Without Vane" },
+        { "code": "56", "meaning": "Stop Travel When Downwards Activated Without Vane(1V)" },
+        { "code": "57", "meaning": "activation of safety series in motion" },
+        { "code": "58", "meaning": "activation of presence series in motion" },
+        { "code": "59", "meaning": "activation of lock series in motion" },
+        { "code": "60", "meaning": "incorrect variables detected" },
+        { "code": "61", "meaning": "slowdown when upwards incorrect activation B323" },
+        { "code": "62", "meaning": "slowdown when downwards incorrect activation B322" },
+        { "code": "63", "meaning": "opening with slowdowns when upwards B323" },
+        { "code": "64", "meaning": "opening with slowdowns when downwards B322" },
+        { "code": "65", "meaning": "whenever ucm2 control is reset due to a malfunction. Application implemented once ucm2 version v01.06.15. subcode consult with R and D" },
+        { "code": "66", "meaning": "inspection control connections" },
+        { "code": "67", "meaning": "recovery control connections" },
+        { "code": "68", "meaning": "lift in correction phase" },
+        { "code": "69", "meaning": "overload activated" },
+        { "code": "70", "meaning": "car communication failure" },
+        { "code": "71", "meaning": "differential overload activated" },
+        { "code": "72", "meaning": "no area signal" },
+        { "code": "73", "meaning": "front capacitive edge activatedfor 30 seconds" },
+        { "code": "74", "meaning": "Board UCM2 test mode activated" },
+        { "code": "75", "meaning": "failure  in EEPROM parameter copying" },
+        { "code": "76", "meaning": "landing door opened w/o on the in controller,reset activating and deactivating the emergency switch on the control board" },
+        { "code": "77", "meaning": "short-circuit in car board UCC2. It may also trip due to over consumption" },
+        { "code": "78", "meaning": "landing door opened with voltage in main controller" },
+        { "code": "79", "meaning": "N/A" },
+        { "code": "80", "meaning": "rear capacitive edge activated for 30 seconds" },
+        { "code": "81", "meaning": "front photocell activated for 30 seconds" },
+        { "code": "82", "meaning": "rear photocell activated  for 30 seconds" },
+        { "code": "83", "meaning": " front safety edge activated for 30 seconds" },
+        { "code": "84", "meaning": "back safety edge activated for 30 seconds" },
+        { "code": "85", "meaning": "failure during teach-in, no rear landing plate detected (further details IN 'FAULTS SUBCODES')"},
+        { "code": "86", "meaning": "failure during teach-in, no front landing plate detected (further details IN 'FAULTS SUBCODES')"},
+        { "code": "87", "meaning": "Tech-in failure , more landing boards than programmed are detected(front)" },
+        { "code": "88", "meaning": "tech-in failure , more landing boards than programmed are detected(rear)" },
+        { "code": "89", "meaning": "faults not assigned" },
+        { "code": "90", "meaning": "car communication failure" },
+        { "code": "91", "meaning": "front car board initialisation failure" },
+        { "code": "92", "meaning": "rear car board initialisation failure" },
+        { "code": "93", "meaning": "machine room overheating fault" },
+        { "code": "94", "meaning": "PTC overheating fault" },
+        { "code": "95", "meaning": "running contactor KO6 does not switch off. (CPI-CAN)" },
+        { "code": "96", "meaning": "running contactor KO6 does not switch on. (CPI-CAN)" },
+        { "code": "97", "meaning": "none of the running contactors KO6,KO61 and KO62 switch off .(CPI-CAN)" },
+        { "code": "98", "meaning": "none of the running contactors KO6,KO61 and KO62 switch on.(CPI-CAN)" },
+        { "code": "99", "meaning": "Brake contactor KDF does not off.(CP-CAN)" },
+        { "code": "100", "meaning": "Brake contactor KDF does not off.(CP-CAN)" },
+        { "code": "101", "meaning": "CAN COMMUNICATION FAILURE BETWEEN CONTROL AND DRIVE" },
+        { "code": "102", "meaning": "CPI STARTING, STOPPING OR SLOWDOWN SEQUENCE FAILURE, (CPI-CAN)" },
+        { "code": "103", "meaning": "Communication failure between UCM2 and UCV" },
+        { "code": "104", "meaning": "supervision of brake contacts. Brk1 contact is not activated" },
+        { "code": "105", "meaning": "supervision of brake contacts. Brk1 is not activated" },
+        { "code": "106", "meaning": "supervision of brake contacts. Brk2 contact is not activated" },
+        { "code": "107", "meaning": "supervision of brake contacts, brk2 (can drive) contact is not activated" },
+        { "code": "108", "meaning": "initialisation failure between control and drive" },
+        { "code": "109", "meaning": "smoke detector in shaft activated" },
+        { "code": "110", "meaning": "fault of unintended movement control system" },
+        { "code": "111", "meaning": "B322 or B232 bi-stable end failure" },
+        { "code": "112", "meaning": "buoy flooding sensor activated" },
+        { "code": "113", "meaning": "error in parameter control" },
+        { "code": "114", "meaning": "it has been detected that a hydraulic elevator has low oil level" },
+        { "code": "115", "meaning": "car light fault detected" },
+        { "code": "116", "meaning": "command to stop received from remote service" },
+        { "code": "117", "meaning": "Evacuation by firemen according to the 'resetFireService' parameter, the  lift is blocked untill it is reset"},
+        { "code": "118", "meaning": "an uncontrolled exit from the area is detected" },
+        { "code": "119", "meaning": "the start correction sequence could not be initiated" },
+        { "code": "120", "meaning": "blocked due to brake microswitch failure" },
+        { "code": "121", "meaning": "blocked due to pre-opening module failure" },
+        { "code": "122", "meaning": "LIBRES" },
+        { "code": "123", "meaning": "LIBRES" },
+        { "code": "124", "meaning": "LIBRES" },
+        { "code": "125", "meaning": "LIBRES" },
+        { "code": "126", "meaning": "'tMaxNudge' parameter program nudging time out of range"},
+        { "code": "127", "meaning": "'pltCortas' parameter area with short floors incorrectly defined"},
+        { "code": "128", "meaning": "immediate stop; uba2 x90.2 input deactivated" },
+        { "code": "129", "meaning": "No Vane Impulses Received" },
+        { "code": "130", "meaning": "Programmed Time In Slow Exceeded" },
+        { "code": "131", "meaning": "Fast Speed Contactor Does Not Switch On" },
+        { "code": "132", "meaning": "Fast Speed Contactor Does Not Switch Off" },
+        { "code": "133", "meaning": "Slow Speed Contactor Does Not Switch On" },
+        { "code": "134", "meaning": "Slow Speed Contactor Does Not Switch Off" },
+        { "code": "135", "meaning": "Upwards Trip Speed Contactor Does Not Switch On" },
+        { "code": "136", "meaning": "Upwards Trip Speed Contactor Does Not Switch Off" },
+        { "code": "137", "meaning": "Downwards Trip Speed Contactor Does Not Switch On" },
+        { "code": "138", "meaning": "Downwards Trip Speed Contactor Does Not Switch Off" },
+        { "code": "139", "meaning": "Downwards Trip Speed Contactor Does Not Switch Off" },
+        { "code": "140", "meaning": "Next Stop Not Defined" },
+        { "code": "141", "meaning": "Traction  Type Not Defined" },
+        { "code": "142", "meaning": "Direction Reversal Detected" },
+        { "code": "143", "meaning": "Eeprom Writing Failure" },
+        { "code": "144", "meaning": "Vane Placement Error" },
+        { "code": "145", "meaning": "Start-Up Order And No Vane Exit" },
+        { "code": "146", "meaning": "Reading/Writing RAM failure" },
+        { "code": "147", "meaning": "'mota_sup' 'cota_inf' 'num_sot' parameters out of range or erroneous in EPROM"},
+        { "code": "148", "meaning": "'maxt_dor' parameter maximum door time out of range"},
+        { "code": "149", "meaning": "'conex_hora' parameter maximum number of connection/hour out of range"},
+        { "code": "150", "meaning": "'reserva_conex' maximum connection reserve out of range"},
+        { "code": "151", "meaning": "'maxt_grande' parameter maximum fast speed time out of range"},
+        { "code": "152", "meaning": "'maxt_pequena' parameter maximum slow speed time out of range"},
+        { "code": "153", "meaning": "'maxt_renivel' parameter maximum re-levelling time out of range"},
+        { "code": "154", "meaning": "'cab_call_max' parameter maximum permitted number of car calls out of range and if greater than the difference between 'cota_sup' and 'cota_inf'"},
+        { "code": "155", "meaning": "'ret_stop' parameter maximum stop delay out of range"},
+        { "code": "156", "meaning": "'time_et' parameter maximum star delta start switch out of range"},
+        { "code": "157", "meaning": "button stuck (further details in 'fault subcodes')"},
+        { "code": "158", "meaning": "'ret_rbr' parameter maximum slip fall delay time out of range"},
+        { "code": "159", "meaning": "'prefer_sup' parameter under preferencial level number out of range of the 'cota_sup' of 'cota_inf' defined in the installation"},
+        { "code": "160", "meaning": "'prefer_inf' lower preferencial level number out of range of the 'cota_sup' of 'cota_inf' defined in the installation"},
+        { "code": "161", "meaning": "'lobby_1' parameter max level 2 number out of range of the 'cota_sup' of 'cota_inf' defined in the installation"},
+        { "code": "162", "meaning": "'lobby_2' main level 2 number out of range of the 'cota_sup' of 'cota_inf' defined in the installation"},
+        { "code": "163", "meaning": "'firemen_floor' parameter foreman floor out of range of the 'cota_sup' of 'cota_inf' defined in the installation"},
+        { "code": "164", "meaning": "star (K80.2) or delta (K80.1) contactor not activated" },
+        { "code": "165", "meaning": "star (K80.2) or delta (K80.1) contactor not activated" },
+        { "code": "166", "meaning": "CPI regulator failure" },
+        { "code": "167", "meaning": "photoswitch position sensor pulse fault" },
+        { "code": "168", "meaning": "photoswitch position sensor pulse fault" },
+        { "code": "169", "meaning": "photoswitch position sensor pulse fault" },
+        { "code": "170", "meaning": "photoswitch position sensor pulse fault" },
+        { "code": "171", "meaning": "starting command without setting the direction of travel" },
+        { "code": "172", "meaning": "a required MPI_TKE module does not work" },
+        { "code": "173", "meaning": "DEA rescue device activated" },
+        { "code": "174", "meaning": "DEA rescue finished" },
+        { "code": "175", "meaning": "Dea rescue control error (further details in 'fault subcodes')"},
+        { "code": "176", "meaning": "'cota_infInterm' or 'cota_supInterm' parameters out of range of the 'cota_sup' of 'cota_inf' defined in the installation"},
+        { "code": "177", "meaning": "'cota_infInterm' parameter lower intermediate level out of range."},
+        { "code": "178", "meaning": "'cota_supInterm' upper intermediate level out of range."},
+        { "code": "179", "meaning": "shaft CAN bus failure" },
+        { "code": "180", "meaning": "group CAN bus failure" },
+        { "code": "181", "meaning": "error in a parameter related to the positioning with encoder" },
+        { "code": "182", "meaning": "shaft measurement not solid" },
+        { "code": "183", "meaning": "encoder pulse signal fails" },
+        { "code": "184", "meaning": "positioning does not match with shaft measurements" },
+        { "code": "185", "meaning": "encoder general fault" },
+        { "code": "186", "meaning": "the extra cn is not consistent with B322 'CMB' AND B323 'CMS'"},
+        { "code": "187", "meaning": "The DMC Device Is Not Connected Or Has Not Been Initialised Properly" },
+        { "code": "188", "meaning": "the uco device or CAN door operator is not connected or was not correctly initialised (further details in 'fault subcodes')"},
+        { "code": "189", "meaning": "failure of one of the car operating panel plates (BMS/IMC)" },
+        { "code": "190", "meaning": "when stopping the inverter does not authorise brake activation" },
+        { "code": "191", "meaning": "failure to detect when stopping the opening of the series which is normally open" },
+        { "code": "192", "meaning": "when stopping the inverter does not authorise the opening of the motor contactor" },
+        { "code": "193", "meaning": "failure to close when stopping the series normally closed" },
+        { "code": "194", "meaning": "at start-up the series which are normally open and the series normally closed are not in their initial states" },
+        { "code": "195", "meaning": "at start-up the series which are normally closed fail to open" },
+        { "code": "196", "meaning": "at start-up the inverter  does no authorise the activation of the motor contactor" },
+        { "code": "197", "meaning": "at start-up the inverter  does no authorise brake release" },
+        { "code": "198", "meaning": "at start-up the series which are normally open do not close or do not open the brake micro switches" },
+        { "code": "199", "meaning": "while running the iniverter run signal fails" },
+        { "code": "200", "meaning": "the control is in brake testing mode" },
+        { "code": "201", "meaning": "the brake test concluded incorrectly" },
+        { "code": "202", "meaning": "Unexpected Current Detected In The Inverter Transformer" },
+        { "code": "203", "meaning": "The Drive Reported A Failure" },
+        { "code": "204", "meaning": "If A Failure Occurs In The Drive During Initialisation Thereof" },
+        { "code": "205", "meaning": "LIBRE" },
+        { "code": "206", "meaning": "The safety series are activated during start" },
+        { "code": "207", "meaning": "Failure Of Regenerative Equipment During Start" },
+        { "code": "208", "meaning": "LIBRES" },
+        { "code": "209", "meaning": "LIBRES" },
+        { "code": "210", "meaning": "LIBRES" },
+        { "code": "211", "meaning": "LIBRES" },
+        { "code": "212", "meaning": "LIBRES" },
+        { "code": "213", "meaning": "LIBRES" },
+        { "code": "214", "meaning": "LIBRES" },
+        { "code": "215", "meaning": "LIBRES" },
+        { "code": "216", "meaning": "LIBRES" },
+        { "code": "217", "meaning": "LIBRES" },
+        { "code": "218", "meaning": "LIBRES" },
+        { "code": "219", "meaning": "LIBRES" },
+        { "code": "220", "meaning": "LIBRES" },
+        { "code": "221", "meaning": "LIBRES" },
+        { "code": "222", "meaning": "LIBRES" },
+        { "code": "223", "meaning": "LIBRES" },
+        { "code": "224", "meaning": "LIBRES" },
+        { "code": "225", "meaning": "LIBRES" },
+        { "code": "226", "meaning": "LIBRES" },
+        { "code": "227", "meaning": "LIBRES" },
+        { "code": "228", "meaning": "LIBRES" },
+        { "code": "229", "meaning": "LIBRES" },
+        { "code": "230", "meaning": "LIBRES" },
+        { "code": "231", "meaning": "LIBRES" },
+        { "code": "232", "meaning": "LIBRES" },
+        { "code": "233", "meaning": "LIBRES" },
+        { "code": "234", "meaning": "LIBRES" },
+        { "code": "235", "meaning": "LIBRES" },
+        { "code": "236", "meaning": "LIBRES" },
+        { "code": "237", "meaning": "LIBRES" },
+        { "code": "238", "meaning": "Error Accessing Via The Lca1 Interface" },
+        { "code": "239", "meaning": "LIBRES" },
+        { "code": "240", "meaning": "LIBRES" },
+        { "code": "241", "meaning": "LIBRES" },
+        { "code": "242", "meaning": "LIBRES" },
+        { "code": "243", "meaning": "LIBRES" },
+        { "code": "244", "meaning": "LIBRES" },
+        { "code": "245", "meaning": "LIBRES" },
+        { "code": "246", "meaning": "LIBRES" },
+        { "code": "247", "meaning": "LIBRES" },
+        { "code": "248", "meaning": "LIBRES" },
+        { "code": "249", "meaning": "LIBRES" },
+        { "code": "250", "meaning": "Default Initialisation Of Parameters" },
+        { "code": "251", "meaning": "Fault Pile Reset Or Deleted. Marks The Last Time The Fault Pile Was Deleted" },
+        { "code": "252", "meaning": "Control Initialising" },
+        { "code": "253", "meaning": "Manual Reset Completed" },
+        { "code": "254", "meaning": "Generic Failure" },
+        { "code": "255", "meaning": "Normal Operation" }
+
+    ]
+    function displayLinks() {
+        codeTableRows.innerHTML = '';
+        var index = 0;
+        for (let p of Params) {
+            let LinkString = "hi";
+            console.log(p, LinkString);
+            let tableRow = "<tr role='row' class='odd'><td>" + p.code + "</td><td>" + p.meaning + "</td></tr>";
+            codeTableRows.innerHTML += tableRow;
+            index++;
+        }
+    }
+    displayLinks();
+    document.getElementById('meaning').innerHTML = '';
+    // searchButton.addEventListener('click', function (event) {
+    //     event.preventDefault();
+    //     console.log('check fault called')
+    //     let FaultCode = document.querySelector("#fault-code").value;
+    //     console.log('code', FaultCode)
+    //     console.log(FaultCode);
+    //     if (FaultCode >= 0 && FaultCode <= 255) {
+    //         console.log("FaultCode is valid")
+    //         for (let param of Params) {
+    //             if (FaultCode == param.code) {
+    //                 document.getElementById('meaning').innerHTML = param.meaning;
+    //             }
+    //         }
+    //     } else {
+    //         console.log("invalid code")
+    //         document.getElementById('meaning').innerHTML = 'invalid fault code';
+    //     }
+    // })
+
+</script> -->
