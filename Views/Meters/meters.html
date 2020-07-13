@@ -1,0 +1,117 @@
+
+<div class="row" style="margin: auto;padding: 20px;max-height: 100%;overflow-y: scroll;">
+    <div class="col-xs-12 col-sm-4" style="max-height: 70%;overflow-y: scroll;">
+        <table
+           id="meterTable" class="table table-hover table-striped table-bordered table-responsive table-hover text-dark">
+            <thead>
+                <tr role="row" style="color:white;background-color: #2892ce;">
+                    <th class="nowrap text-center ccc dt-center" style="width: 19.5556px;" rowspan="1" colspan="1"
+                        aria-label="">No</th>
+                  
+                    <th class="nowrap" tabindex="0" aria-controls="table_data_tags" rowspan="1" colspan="1"
+                        style="width: 784px;">Name</th>
+                  
+                </tr>
+            </thead>
+            <tbody id="meterList">
+
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+
+        <div class="box box-primary shadow-lg">
+            <div class="box-header" style="cursor: move;">
+                <h2 class="box-title" style="font-size: 20px;"><i class="fa fa-desktop txt-prim"></i> <span id="meterName"></span></h2>
+                <div class="box-tools pull-right" data-toggle="tooltip" title="" data-original-title="Status">
+                    <div><span id="param_ONLINE" class="online"
+                            style="font-weight: 400;font-size:2rem;">ONLINE</span></div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="section" style="margin-top:8px;">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="text-center col-sm-4">
+                                <div class="my-2">
+                                    <i class="txt-prim fa fa-line-chart"></i>
+                                </div>
+                                <div id="loadSwitchControls" style="display: none;">
+                                    <span id="connect" class="btn btn-sm btn-success" style = "color:green; margin-left: 15px;" onclick="connectMeter()">Connect</span>
+                                    <span id="disconnect" class="btn btn-sm btn-success" style = "color:red; margin-left: 10px;" onclick="disconnectMeter()">Disconnect</span>
+                                    <span id="con-status" style = "margin-left: 25px;"></span>
+                                </div>
+                                <div class="mb-1 text-dark">Energy</div>
+                                <div class="text-dark" style="margin-top: 8px;"><span id="param_KWHI" style="font-size: 4rem;font-weight: 500;">##.##</span><span class="ml-2" style="font-size: 1.5rem;font-weight: 500;margin-left: 6px;">KWH</span>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+<div class="container" style="margin-top: 15px;">
+        <div class="row" style="margin-top:10px;">
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">V1 <span class="side-note">(V)</span></div>
+                        <div id="param_V1" class="param-box">##.##</div>
+                </div><!-- ./col -->
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">V2 <span class="side-note">(V)</span></div>
+                        <div id="param_V2" class="param-box">##.##</div id="param_V1">
+                </div><!-- ./col -->
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">V3 <span class="side-note">(V)</span></div>
+                        <div id="param_V3" class="param-box">##.##</div>
+                </div><!-- ./col -->
+            </div><!-- /.row -->
+        <div class="row" style="margin-top:10px;">
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">I1 <span class="side-note">(A)</span></div>
+                        <div id="param_I1" class="param-box">##.##</div>
+                </div><!-- ./col -->
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">I2 <span class="side-note">(A)</span></div>
+                        <div id="param_I2" class="param-box">##.##</div>
+                </div><!-- ./col -->
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">I3 <span class="side-note">(A)</span></div>
+                        <div id="param_I3" class="param-box">##.##</div>
+                </div><!-- ./col -->
+            </div><!-- /.row -->
+        <div class="row" style="margin-top:10px;">
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">W</div>
+                        <div id="param_WT" class="param-box">##.##</div>
+                </div><!-- ./col -->
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">VAR</div>
+                        <div id="param_VART" class="param-box">##.##</div>
+                </div><!-- ./col -->
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">VA</div>
+                        <div id="param_VAT" class="param-box">##.##</div>
+                </div><!-- ./col -->
+            </div><!-- /.row -->
+        <div class="row" style="margin-top:10px;">
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">PF</div>
+                        <div id="param_PFT" class="param-box">##.##</div>
+                </div><!-- ./col -->
+                <div class="col-xs-12 col-sm-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div class="param-box-label">Hz</div>
+                        <div id="param_FREQ" class="param-box">##.##</div>
+                </div><!-- ./col -->
+                
+            </div><!-- /.row -->
+       
+</div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
